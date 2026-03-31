@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Resume Screening</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+/* BODY (New Attractive Gradient) */
+body{
+    background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
+    color:#fff;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 50px;
+    background:rgba(2,6,23,0.8);
+    backdrop-filter:blur(12px);
+    position:sticky;
+    top:0;
+}
+
+header h2{
+    color:#38bdf8;
+}
+
+nav a{
+    margin-left:20px;
+    text-decoration:none;
+    color:#cbd5f5;
+    font-size:14px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px;
+    gap:30px;
+}
+
+.hero-text h1{
+    font-size:42px;
+}
+
+.hero-text p{
+    color:#cbd5f5;
+    font-size:14px;
+}
+
+.hero img{
+    max-width:350px;
+}
+
+/* FORM BOX */
+.box{
+    max-width:380px;
+    margin:50px auto;
+    padding:25px;
+    border-radius:15px;
+    background:hsla(0, 0%, 0%, 0.05);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 30px rgba(0, 0, 0, 0.73);
+    text-align:center;
+}
+
+/* TITLE */
+.form-title{
+    margin-bottom:5px;
+}
+
+.form-subtitle{
+    font-size:13px;
+    color:#cbd5f5;
+    margin-bottom:15px;
+}
+
+/* UPLOAD */
+.upload{
+    display:block;
+    border:1px dashed #38bdf8;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    color:#cbd5f5;
+    transition:0.3s;
+}
+
+.upload:hover{
+    background:#020617;
+}
+
+/* FILE NAME */
+.file-name{
+    font-size:12px;
+    margin-top:8px;
+    color:#38bdf8;
+}
+
+/* UPLOAD BOX */
+.upload-box{
+    display:block;
+    border:2px dashed #38bdf8;
+    border-radius:12px;
+    padding:18px;
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
+    background:rgba(255,255,255,0.03);
+    position:relative;
+}
+
+/* HOVER EFFECT */
+.upload-box:hover{
+    background:rgba(56,189,248,0.08);
+    border-color:#0ea5e9;
+    transform:translateY(-2px);
+}
+
+/* INNER CONTENT */
+.upload-inner p{
+    font-size:14px;
+    margin:5px 0;
+}
+
+.upload-inner small{
+    font-size:11px;
+    color:#94a3b8;
+}
+
+/* ICON */
+.upload-icon{
+    font-size:24px;
+    display:block;
+}
+
+/* HIDE INPUT */
+.upload-box input{
+    display:none;
+}
+
+/* FILE NAME */
+.file-name{
+    margin-top:8px;
+    font-size:12px;
+    color:#38bdf8;
+}
+
+/* TEXTAREA */
+textarea{
+    width:100%;
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    background:#020617;
+    color:#fff;
+    font-size:13px;
+    resize:none;
+}
+
+/* BUTTON */
+.btn-center{
+    text-align:center;
+}
+
+button{
+    margin-top:15px;
+    padding:8px 20px;
+    border:none;
+    border-radius:8px;
+    background:#38bdf8;
+    color:#000;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0ea5e9;
+    transform:translateY(-2px);
+}
+
+/* LOADER */
+.loader{
+    display:none;
+    margin-top:10px;
+    font-size:13px;
+    color:#38bdf8;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .box{
+        width:90%;
+    }
+}
+
+/* FEATURES (UPDATED WITH IMAGE BOX) */
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    padding:40px;
+}
+
+.feature-card{
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-6px);
+}
+
+/* IMAGE BOX */
+.feature-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+/* TEXT */
+.feature-content{
+    padding:15px;
+}
+
+.feature-content h3{
+    margin-bottom:5px;
+}
+
+.feature-content p{
+    font-size:13px;
+    color:#cbd5f5;
+}
+
+.feature-card img{
+    width:100%;
+    height:220px;   /* increase size (you can make 240px if you want bigger) */
+    object-fit:cover;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+/* Optional: Hover Zoom Effect 🔥 */
+.feature-card:hover img{
+    transform:scale(1.05);
+}
+
+/* CONTACT (NEW MODERN DESIGN) */
+.contact-form{
+    max-width:450px;
+    margin:50px auto;
+    padding:25px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.contact-form h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    background:#020617;
+    color:#fff;
+}
+
+
+/* RESULT BOX */
+.result-box{
+    max-width:360px;
+    margin:25px auto;
+    padding:22px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    animation:fadeIn 0.6s ease;
+}
+
+/* TITLE */
+.result-box h3{
+    margin-bottom:10px;
+}
+
+/* SCORE */
+.score{
+    font-size:34px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+/* PROGRESS */
+.progress{
+    width:100%;
+    height:10px;
+    background:#020617;
+    border-radius:10px;
+    overflow:hidden;
+    margin:10px 0;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    border-radius:10px;
+    transition:width 1s ease;
+}
+
+/* TEXT */
+.result-text{
+    font-size:13px;
+    color:#cbd5f5;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    color:#aaa;
+}
+
+.footer{
+    background:#020617;
+    padding:30px 20px;
+    margin-top:40px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+.footer-content h3{
+    color:#38bdf8;
+    margin-bottom:5px;
+}
+
+.footer-content p{
+    font-size:13px;
+    color:#cbd5f5;
+}
+
+/* LINKS */
+.footer-links{
+    margin:15px 0;
+}
+
+.footer-links a{
+    margin:0 10px;
+    text-decoration:none;
+    color:#cbd5f5;
+    font-size:13px;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#38bdf8;
+}
+
+/* COPYRIGHT */
+.footer-copy{
+    margin-top:10px;
+    font-size:12px;
+    color:#aaa;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:30px 20px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+        padding:20px;
+    }
+
+    header{
+        padding:15px 20px;
+    }
+
+    .hero-text h1{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🤖 AI Hiring</h2>
+<nav>
+<a href="#home">Home</a>
+<a href="#features">Features</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero">
+<div class="hero-text">
+<h1>AI Resume Screening System</h1>
+<p>Analyze resumes instantly and match candidates with job roles using intelligent AI algorithms. Our system carefully evaluates candidate profiles by analyzing skills, experience, qualifications, and relevant keywords to ensure precise matching. It compares resumes with job requirements to identify the most suitable candidates, reducing manual effort and saving valuable time. With advanced AI-driven insights, the platform provides accurate recommendations, improves decision-making, and streamlines the entire recruitment process, making hiring faster, smarter, and more efficient for organizations.</p>
+</div>
+<img src="https://explore.hireez.com/hubfs/AI%20resume%20screening.jpg" alt="AI">
+</section>
+
+<!-- UPLOAD -->
+<div class="box">
+
+  <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="showLoader()">
+
+    <h3 class="form-title">Upload Resume</h3>
+    <p class="form-subtitle">Upload your resume and paste job description to check match score</p>
+
+    <!-- Upload -->
+    <label class="upload-box">
+  <div class="upload-inner">
+    <span class="upload-icon">📂</span>
+    <p>Click to upload your resume</p>
+    <small>PDF, DOC, DOCX (Max 5MB)</small>
+  </div>
+  <input type="file" name="resume" id="fileInput" required>
+</label>
+
+<p id="fileName" class="file-name"></p>
+
+    <p id="fileName" class="file-name"></p>
+
+    <!-- Job Description -->
+    <textarea name="job_description" placeholder="Paste job description here..." required></textarea>
+
+    <!-- Button -->
+    <div class="btn-center">
+      <button type="submit">Check Score</button>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">🔍 Analyzing...</div>
+
+  </form>
+
+</div>
+
+
+
+
+<!-- FEATURES -->
+<section id="features">
+<h2 style="text-align:center;margin-bottom:30px;">Features</h2>
+
+<div class="features">
+
+  <div class="feature-card">
+    <img src="https://img.freepik.com/free-vector/woman-resume-with-magnifier-table-cv-resume-concept-finding-worker-apply-job-business-opportunity-cv-profile_613284-42.jpg?semt=ais_incoming&w=740&q=80" alt="Resume Analysis">
+    <div class="feature-content">
+      <h3>📄 Resume Analysis</h3>
+      <p>Upload resumes and receive instant AI-based evaluation, including skill analysis, keyword matching, and candidate ranking.</p>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <img src="https://www.shutterstock.com/image-photo/artificial-intelligence-selecting-resumes-verified-600nw-2658660139.jpg" alt="Smart Matching">
+    <div class="feature-content">
+      <h3>🎯 Smart Matching</h3>
+      <p>Match candidates with job roles using AI by analyzing skills, experience, and job requirements for better hiring decisions.</p>
+    </div>
+  </div>
+
+  <div class="feature-card">
+    <img src="https://st2.depositphotos.com/1014014/6464/i/450/depositphotos_64642557-stock-photo-yes-to-quick-results-illustration.jpg" alt="Fast Results">
+    <div class="feature-content">
+      <h3>⚡ Fast Results</h3>
+      <p>Get accurate results within seconds with AI-powered analysis, ensuring fast and reliable candidate evaluation.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 style="text-align:center;margin-bottom:20px;">Contact Us</h2>
+
+  <!-- Address / Info -->
+  <div style="text-align:center;margin-bottom:20px;color:#cbd5f5;font-size:14px;">
+    📍 Prayagraj, India <br>
+    📧 contact@yourdomain.com <br>
+    📞 +91 9876543210
+  </div>
+
+  <!-- Form -->
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="4" placeholder="Your Message" required></textarea>
+    
+    <div style="text-align:center;">
+      <button type="submit">Send Message</button>
+    </div>
+  </form>
+</section>
+
+
+<!-- Result box -->
+<div class="result-box">
+  {% if score %}
+    <h3>Match Score</h3>
+    <div class="score">{{ score }}%</div>
+
+    <!-- Progress Bar -->
+    <div class="progress">
+      <div class="progress-bar" style="width: {{ score }}%;"></div>
+    </div>
+
+    <p class="result-text">Candidate suitability based on AI analysis</p>
+  {% endif %}
+</div>
+
+{% if score %}
+<script>
+  decorateResult({{ score }});
+</script>
+{% endif %}
+
+<footer class="footer">
+  <div class="footer-content">
+
+    <h3>AI Resume Screening</h3>
+    <p>Smart hiring powered by AI technology.</p>
+
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <p class="footer-copy">
+      © 2026 AI Resume Screening | Developed by <strong>Rajneesh Kumar Mishra</strong> 🚀
+    </p>
+
+  </div>
+</footer>
+
+<script>
+
+
+function showResult(score){
+    const box = document.getElementById("resultBox");
+    const scoreText = document.getElementById("scoreText");
+    const progressBar = document.getElementById("progressBar");
+    const resultText = document.getElementById("resultText");
+
+    box.style.display = "block";
+
+    // Animate score
+    let current = 0;
+    let interval = setInterval(() => {
+        if(current >= score){
+            clearInterval(interval);
+        } else {
+            current++;
+            scoreText.innerText = current + "%";
+        }
+    }, 20);
+
+    // Progress bar
+    progressBar.style.width = score + "%";
+
+    // Dynamic color + message
+    if(score >= 75){
+        progressBar.style.background = "#22c55e";
+        scoreText.style.color = "#22c55e";
+        resultText.innerText = "Excellent match! Highly suitable candidate.";
+    }
+    else if(score >= 50){
+        progressBar.style.background = "#facc15";
+        scoreText.style.color = "#facc15";
+        resultText.innerText = "Good match. Candidate meets many requirements.";
+    }
+    else{
+        progressBar.style.background = "#ef4444";
+        scoreText.style.color = "#ef4444";
+        resultText.innerText = "Low match. Improvement needed.";
+    }
+}
+
+    
+document.getElementById("fileInput").addEventListener("change", function(){
+    document.getElementById("fileName").innerText = "Selected: " + this.files[0].name;
+});
+
+function showLoader(){document.getElementById("loader").style.display="block";}
+</script>
+
+</body>
+</html>
