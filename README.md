@@ -1,7 +1,4 @@
 # AI_Resume-Screening
-AI-powered Resume Screening System to analyze resumes, match candidates with job roles, and provide instant suitability scores using intelligent algorithms.
-
-AI Resume Screening System
 
 AI-powered Resume Screening System is a smart recruitment tool that analyzes resumes, matches candidates to job descriptions, and provides an instant suitability score using intelligent AI algorithms. It simplifies the hiring process, helping recruiters and HR professionals save time while improving candidate-job matching accuracy.
 
