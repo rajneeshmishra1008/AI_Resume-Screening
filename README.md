@@ -24,7 +24,7 @@ Displays results with a progress bar, badge, and additional insights.
 
 Clone the repository:
 
-git clone https://github.com/yourusername/AI_Resume_Screening.git
+git clone http://rajneeshmishra1008.github.io.airesumescreening/
 
 Navigate to the project directory:
 
