@@ -8,18 +8,21 @@ AI-powered Resume Screening System is a smart recruitment tool that analyzes res
 ⚡ Fast Results – Get accurate results instantly.
 📊 Visual Feedback – See match scores with progress bars and badges.
 💻 Responsive UI – Works perfectly on desktop and mobile devices.
+
 🛠 Technology Stack
 Frontend: HTML5, CSS3, JavaScript
 Backend: Python (Flask)
 AI/ML: Natural Language Processing, Resume Parsing Libraries (e.g., PyPDF2, python-docx)
 Database (Optional): SQLite / MySQL
 Deployment: Can be deployed on any cloud server
+
 💡 How It Works
 User uploads a resume (PDF, DOCX, or TXT).
 User pastes the job description.
 AI analyzes the resume for skills, experience, and relevance.
 System calculates a match score (%).
 Displays results with a progress bar, badge, and additional insights.
+
 📂 Installation
 
 Clone the repository:
